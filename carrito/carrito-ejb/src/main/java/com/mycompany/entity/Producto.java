@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -26,10 +28,16 @@ public class Producto implements Serializable {
     private int idProducto;
     @Column (name = "prodcuto")
     private String nombre;
+    @ManyToOne
+    @JoinColumn(name = "id_venta",nullable = false)
+    private Venta venta;
+    
     @Column
     private int cantidad;  
     @Column
     private int precio;
+    @Column
+    private String foto;
 
     public Producto() {
     }

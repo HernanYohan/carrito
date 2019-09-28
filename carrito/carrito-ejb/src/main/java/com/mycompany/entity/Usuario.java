@@ -13,6 +13,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -37,6 +38,10 @@ public class Usuario implements Serializable {
     
     @Column
     private String clave;
+    
+    @ManyToOne
+    @JoinColumn(name = "id_venta",nullable = false)
+    private Venta venta;
 
     /**
      * constructor vacio
