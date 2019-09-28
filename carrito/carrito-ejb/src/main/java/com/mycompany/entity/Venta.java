@@ -33,11 +33,9 @@ public class Venta implements Serializable {
 
     
     @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
-    @Column(name = "id_producto")
     List<Producto> producto;
     
     @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
-    @Column(name = "id_producto")
     List<Usuario> usuario;
 
     @OneToOne(cascade = CascadeType.ALL, mappedBy = "venta")

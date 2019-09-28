@@ -74,11 +74,5 @@ public class Usuario implements Serializable {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
-    
-    
 
-    
-    
-    
 }
