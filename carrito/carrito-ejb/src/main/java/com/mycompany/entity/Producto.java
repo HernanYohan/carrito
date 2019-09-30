@@ -6,6 +6,8 @@
 package com.mycompany.entity;
 
 import java.io.Serializable;
+import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +15,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -23,56 +26,23 @@ import javax.persistence.Table;
 @Table(name = "producto")
 public class Producto implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_producto")
     private int idProducto;
-    @Column (name = "prodcuto")
+    
+    @Column 
     private String nombre;
-    @ManyToOne
-    @JoinColumn(name = "id_venta",nullable = false)
-    private Venta venta;
+    
+    @OneToMany(mappedBy = "producto",cascade = CascadeType.ALL)
+    private List<Venta> ListaVentaProdcuto;
     
     @Column
     private int cantidad;  
+    
     @Column
     private int precio;
+    
     @Column
     private String foto;
-
-    public Producto() {
-    }
-
-    public int getIdProducto() {
-        return idProducto;
-    }
-
-    public void setIdProducto(int idProducto) {
-        this.idProducto = idProducto;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public int getPrecio() {
-        return precio;
-    }
-
-    public void setPrecio(int precio) {
-        this.precio = precio;
-    }
-    
     
 }

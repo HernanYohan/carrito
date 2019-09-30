@@ -14,6 +14,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -27,52 +29,19 @@ import javax.persistence.Table;
 @Table(name = "venta")
 public class Venta implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_venta")
     private int idVenta;
 
     
-    @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
-    List<Producto> producto;
+    @ManyToOne
+    @JoinColumn(name = "id_producto",nullable = false)
+    private Producto producto;
     
-    @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
-    List<Usuario> usuario;
-
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "venta")
+    @ManyToOne
+    @JoinColumn(name = "id_factura",nullable = false)
     private Factura factura;
     
-     @Column
+    @Column
     private int cantidad;
-
-    public Venta() {
-    }
-
-    public int getIdVenta() {
-        return idVenta;
-    }
-
-    public void setIdVenta(int idVenta) {
-        this.idVenta = idVenta;
-    }
-
-
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
-    }
-
-    public Factura getFactura() {
-        return factura;
-    }
-
-    public void setFactura(Factura factura) {
-        this.factura = factura;
-    }
-    
-    
-    
 }
