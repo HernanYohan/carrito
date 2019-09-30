@@ -45,4 +45,47 @@ public class Usuario implements Serializable {
     @OneToMany(mappedBy = "usuario",cascade = CascadeType.ALL)
     private List<Factura> listafactura;
 
+    public Usuario() {
+    }
+
+    public Usuario(String nombre, String clave, List<Factura> listafactura) {
+        this.nombre = nombre;
+        this.clave = clave;
+        this.listafactura = listafactura;
+    }
+
+    public int getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
+
+    public List<Factura> getListafactura() {
+        return listafactura;
+    }
+
+    public void setListafactura(List<Factura> listafactura) {
+        this.listafactura = listafactura;
+    }
+    
+    
+
 }

@@ -41,6 +41,49 @@ public class Factura implements Serializable {
     
     @Column
     private int total;
+
+    public Factura() {
+    }
+
+    public Factura(List<Venta> listaVentaFactura, Usuario usuario, int total) {
+        this.listaVentaFactura = listaVentaFactura;
+        this.usuario = usuario;
+        this.total = total;
+    }
+
+    public int getIdFactura() {
+        return idFactura;
+    }
+
+    public void setIdFactura(int idFactura) {
+        this.idFactura = idFactura;
+    }
+
+    public List<Venta> getListaVentaFactura() {
+        return listaVentaFactura;
+    }
+
+    public void setListaVentaFactura(List<Venta> listaVentaFactura) {
+        this.listaVentaFactura = listaVentaFactura;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+    
+    
     
     
     
